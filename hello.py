@@ -15,5 +15,9 @@ def user_agent():
     user_agent = request.headers.get('User-Agent')
     return '<p>Your browser is %s</p>' % user_agent
 
+@app.route('/bad')
+def bad():
+    return '<h1>Bad Request</h1>', 400
+
 if __name__ == '__main__':
     app.run(debug=True)
