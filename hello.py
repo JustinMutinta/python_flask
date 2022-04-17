@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -18,6 +18,14 @@ def user_agent():
 @app.route('/bad')
 def bad():
     return '<h1>Bad Request</h1>', 400
+
+@app.route('/index')
+def index_html():
+    return render_template('index.html')
+
+@app.route('/users/<name>')
+def hello(name):
+    return render_template('hello.html', name=name)
 
 if __name__ == '__main__':
     app.run(debug=True)
